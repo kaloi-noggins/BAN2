@@ -1,27 +1,78 @@
 --1)Função para inserção de um mecânico.
-create or replace function (pcodm int, pnome varchar, pfuncao varchar) returns void as
+CREATE OR REPLACE FUNCTION cadastrar_mecanico(param_codm int, param_nome varchar, param_funcao varchar)
+    RETURNS void
+    AS $$
+BEGIN
+    INSERT INTO mecanico(codm, nome, funcao)
+        VALUES(pcodm, pnome, pfuncao);
+END;
 $$
-    insert into mecanico(codm, nome, funcao)
-    values (pcodm,pnome,pfuncao)
+LANGUAGE plpgsql;
+
+--2)Função para exclusão de um mecânico.
+CREATE OR REPLACE FUNCTION remover_mecanico(param_codm int)
+    RETURNS void
+    AS $$
+BEGIN
+    DELETE FROM mecanico
+    WHERE pcodm = pcodm_param;
+END;
 $$
-language sql;
---2)Função para exclusão de um mecânico. 
+LANGUAGE plpgsql;
+
 --3)Função única para inserção, atualizar e exclusão de um cliente.
+-- operacoes:
+-- 1 - inserir
+-- 2 - atualizar
+-- 3 - exlusão
+CREATE OR REPLACE FUNCTION gerencia_clientes(operacao int, param_codc int, param_cpf char(11), param_nome varchar, param_idade int, param_endereco varchar, param_cidade varchar)
+    RETURNS void
+    AS $$
+BEGIN
+    IF operacao = 1 THEN
+        INSERT INTO cliente
+            VALUES(param_codc, param_cpf, param_nome, param_endereco, param_cidade);
+    ELSIF operacao = 2 THEN
+        UPDATE
+            cliente
+        SET
+(codc,
+                cpf,
+                nome,
+                endereco,
+                cidade) =(param_codc,
+                param_cpf param_nome,
+                param_endereco,
+                param_cidade);
+    ELSIF operacao = 2 THEN
+        DELETE FROM cliente
+        WHERE codc = param_codc;
+        ELSe: RETURN void;
+    END IF;
+END;
+$$
+LANGUAGE plpgsql;
 
 --4)Função que limite o cadastro de no máximo 10 setores na oficina mecânica.
-create or replace function cadastrar_setor(pcods int, pnome varchar) returns void as
+CREATE OR REPLACE FUNCTION cadastrar_setor(pcods int, pnome varchar)
+    RETURNS void
+    AS $$
+DECLARE
+    quant int DEFAULT 0;
+BEGIN
+    SELECT
+        count(*)
+    FROM
+        setor INTO quant;
+    IF quant > 10 THEN
+        RAISE execption 'Quantidade máxima excedida';
+    END IF;
+    INSERT INTO setor
+        VALUES (pcods, pnome);
+END;
 $$
-declare
-    quant int default 0;
-begin
-    select count(*) from setor into quant;
-    if quant > 10 then
-        raise execption 'Qunatidade máxima excedidad';
-    end if;
-    insert into setor values(pcods, pnome);
-end;
-$$
-language plpgsql;
+LANGUAGE plpgsql;
+
 --5)Função que limita o cadastro de um conserto apenas se o mecânico não tiver mais de 3 consertos agendados para o mesmo dia.
 --6)Função para calcular a média geral de idade dos Mecânicos e Clientes.
 --7)Função única que permita fazer a exclusão de um Setor, Mecânico, Cliente ou Veículo.

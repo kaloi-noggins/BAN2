@@ -1,0 +1,31 @@
+1: 
+1.1 -> A atualização feita pela transação T1 foi perdida (sobrescrita por T2)
+1.2 -> A transação T1 falha após ter escrito X, e T2 lê X antes de T1 falhar, ficando assim com o valor temporário de X.
+1.3 -> T2 lê X depois de X-N e antes de Y-N, fazendo a operação errada em soma + Y
+
+2-a:
+x1 -> SPIDERMAN
+x2 -> SPIDERMAN
+
+b:
+x1 -> Peter Parker
+x2 -> 100
+x3 -> Peter Parker
+x4 -> 100
+x -> Peter Parker
+
+3:
+READ_UNCOMITED | sim | sim | sim |
+READ_COMMITED  | nao | sim | nao |
+REPEATABLE_READ| nao | nao | sim |
+SERIALIZABLE   | nao | nao | nao |
+
+4:
+C
+
+5:
+A
+
+6:
+A
+
