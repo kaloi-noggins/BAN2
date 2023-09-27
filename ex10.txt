@@ -1,0 +1,24 @@
+1-a) As transações que não foram efetivadas vão para a lista de transações a serem desfeitas (UNDO), e as que foram efetivadas vão para a lista de tranasações a serem refeitas REDO
+
+Lista REDO:
+T4,
+
+Lista UNDO:
+T3,T2
+
+Estado das variáveis ao final do processo:
+A: 20
+B: 12
+C: 30
+D: 15
+
+b) Neste caso, há apenas uma lista de transações a serem refeitas (REDO)
+
+Lista REDO:
+T4,T3,T2
+
+Estado das variáveis ao longo do processo (estado final mais à direita):
+A: 22->40->55
+B: 18->38
+C: 34
+D: 30->33

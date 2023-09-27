@@ -1,0 +1,36 @@
+Prova 1 BAN2
+
+-- Questão 01.a)
+--Função que calcule e retorne o salário do empregado passado por parâmetro com acréscimo de 2% para cada dependente com parentesco do tipo ‘filho’ e ‘filha’.
+
+-- Questão 01.b)
+--Função que retorne a soma das horas trabalhadas pelo empregado passado como parâmetro em projetos do mesmo departamento em que ele está alocado.
+
+-- Questão 01.c) Função que retorne o nome dos empregados que têm alocação em projetos de um departamento passado como parâmetro maior que a média de alocação dos empregados em todos os projetos.
+-- Extra: fazer a mesma coisa mas por hora em vez de quantidade de alocações:
+
+-------------------------------
+
+-- Questão 02.a)
+-- Gatilho para impedir que um empregado seja supervisionado por ele mesmo.
+
+-- Questão 02.b)
+-- Gatilho para impedir que um empregado que tenha mais de um cônjuge. Ou seja, tenha mais de um 
+-- dependente com PARENTESCO = ‘cônjuge’
+
+-- Questão 02.c)
+-- Gatilho para impedir que um gerente gerencie mais do que um departamento
+
+-- Questão 02.d)
+-- Gatilho para impedir que um empregado seja supervisionado por um empregado de outro departamento diferente do dele
+
+-------------------------------
+
+-- Questão 03.a)
+-- Visão que mostre o nome de todos os empregados, e para aqueles que estão alocados a projetos, mostre também a quantidade de horas alocadas
+
+-- Questão 03.b)
+-- Visão que mostre o nome dos empresados e de seus dependentes do tipo ‘filho’ e ‘filha’
+
+- Questão 03.c)
+-- Visão que mostra o nome de todos os departamentos, e para aqueles que tem projeto, mostre os nomes dos projetos e de seus empregados alocados.
