@@ -1,0 +1,18 @@
+1-a) Fase onde são solicitados e adquiridos os bloqueios das transações
+
+b) Fase onde as transações vão sendo desbloqueando gradualmente
+
+2) Um deadlock é uma espera circular entre duas transações, isto é, a transação Tx aguarda a finalização da transação Ty, e Ty aguarda a finalização de Tx, e ocorre então uma espera por tempo indefinido.
+
+3.
+Wait-die
+a) esperam
+b) nova
+
+wound-die
+a) abortam
+b) menor
+
+4. não explicado em aula
+
+5. Não há ciclos no grafo de espera, portanto não há deadlock.

@@ -1,0 +1,53 @@
+1) Sim, o escalonamento é serializável em conflito, pois o grafo direcionado que o representa nãp possui ciclos.
+Uma execução serial equivalente seria T1->T2->T3->T4->T5
+
+2) 
+t1  |t2
+r(x)|
+w(x)|
+    |r(x)
+    |w(x)
+r(y)|
+w(y)|
+
+t1  |t2
+r(x)|
+    |r(x)
+w(x)|
+    |w(x)
+r(y)|
+w(y)|
+
+A primeira é serializável em conflito e a segunda não.
+
+3)
+
+Plano 1 (lista de adjacências):
+t3->t1
+t1->t2
+t1->t3
+t2->t3
+Há um ciclo entre t1->t2->t3 e t1->t3. O plano não é serializável em conflito.
+
+Plano 2 (lista de adjacências):
+t1->t3
+t3->t1
+t3->t2
+t1->t2
+Há um ciclo entre t1->t3. O plano não é serializável em conflito.
+
+Plano 3 (lista de adjacências)
+t2->t3
+t3->t1
+t2->t1
+Não há ciclos, portanto o plano é serializável em conflito.
+
+Plano 4 (lista de adjacências):
+t3->t1
+t2->t3
+t2->t1
+Não há ciclos, portanto o plano é serializável em conflito.
+
+4)
+
+5) S1 é serializável em visão e S2 não.
